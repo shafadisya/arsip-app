@@ -146,29 +146,29 @@
                         </td>
                         <td>{{ $arsip->pengunggah }}</td>
                         <td>{{ $arsip->tanggal_upload ? $arsip->tanggal_upload->format('d M Y') : '-' }}</td>
-                        <td>
-                            <a href="{{ asset('storage/' . $arsip->file_path) }}" target="_blank" 
-                               class="btn btn-sm btn-outline-info" title="Lihat File">
-                                <i class="bi bi-file-earmark-text"></i>
+                      <td>
+                        <a href="{{ asset('storage/' . $arsip->file_path) }}" target="_blank"
+                        class="btn btn-info" style="min-width: 100px; margin-bottom: 4px;" title="Lihat File">
+                            <i class="bi bi-file-earmark-text"></i> Lihat File
+                        </a>
+                    </td>
+                    <td class="text-center">
+                        <div class="btn-group" role="group">
+                            <a href="{{ route('arsips.show', $arsip) }}" class="btn btn-success" style="min-width: 80px;" title="Detail">
+                                <i class="bi bi-eye"></i> Detail
                             </a>
-                        </td>
-                        <td class="text-center">
-                            <div class="btn-group" role="group">
-                                <a href="{{ route('arsips.show', $arsip) }}" class="btn btn-sm btn-success" title="Detail">
-                                    <i class="bi bi-eye"></i>
-                                </a>
-                                @if(auth()->user()->role === 'admin' || auth()->user()->npm === $arsip->npm_pengunggah)
-                                <a href="{{ route('arsips.edit', $arsip) }}" class="btn btn-sm btn-warning" title="Edit">
-                                    <i class="bi bi-pencil-square"></i>
-                                </a>
-                                <button type="button" class="btn btn-sm btn-danger" title="Hapus" 
-                                        onclick="confirmDelete('{{ $arsip->id }}', '{{ $arsip->judul }}')">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                                @endif
-                            </div>
-                        </td>
-                    </tr>
+                            @if(auth()->user()->role === 'admin' || auth()->user()->npm === $arsip->npm_pengunggah)
+                            <a href="{{ route('arsips.edit', $arsip) }}" class="btn btn-warning" style="min-width: 80px;" title="Edit">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </a>
+                            <button type="button" class="btn btn-danger" style="min-width: 80px;" title="Hapus"
+                                    onclick="confirmDelete('{{ $arsip->id }}', '{{ $arsip->judul }}')">
+                                <i class="bi bi-trash"></i> Hapus
+                            </button>
+                            @endif
+                        </div>
+                    </td>
+                                        </tr>
                     @empty
                     <tr>
                         <td colspan="8" class="text-center py-5">

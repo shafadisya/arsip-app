@@ -133,7 +133,7 @@ class ArsipController extends Controller
             Storage::disk('public')->delete($arsip->file_path);
 
             // Simpan file baru
-            $filePath = $request->file('file')->store('arsip', 'public');
+             $filePath = $file->storeAs('arsip', $fileName, 'public');
         }
 
         $arsip->update([
